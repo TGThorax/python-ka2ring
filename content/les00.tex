@@ -1,0 +1,225 @@
+% -*- mode: Latex; ispell-dictionary: "dutch"; -*-
+\fvset{gobble=4} % For the python environment in inside this environment, gobble
+                 % up first 4 chars
+
+\section{Algemeen}
+  \subsection{Spaties}: vaak mag je spaties zetten waar je maar wilt, zolang het
+  niet in het begin van de lijn is en het symbool niet verandert, dus \newline
+  `\py{1 + 1}' is hetzelfde als `\py{1+1}', maar `\py{naam}' is
+  niet hetzelfde als \newline `\py{na am}'.
+
+  \subsection{Hoofdletters}: Python is hoofdlettergevoelig, dus \py{math.sqrt}
+  is niet hetzelfde als \py{Math.Sqrt}.
+
+  \subsection{Commentaren}:\,\py{\# alles achter een hekje wordt niet uitgevoerd.}
+
+  \subsection{Hulp}: je kan Python om hulp vragen. Met \py{dir} kan je zien wat
+  de mogelijkheden zijn, en met \py{help} kan je hulp vragen over die
+  mogelijkheid. Zie hieronder voor meer.
+
+\section{Wiskunde}\label{seq:wiskunde}
+  Resultaten van berekeningen zijn aangeduid met commentaar \py{\#$\Rightarrow$}.
+  \begin{tabular}{l@{\hspace{0.5em}}l@{\hspace{0.5em}}l@{\hspace{0.15em}}l}
+    \textbf{operatoren}      & plus (\py +)            & \py{+1 + 1 }         & \py{\#$\Rightarrow$ 2}    \\
+                             & min (\py -)             & \py{+1 - -1 }        & \py{\#$\Rightarrow$ 2}    \\
+                             & maal (\py *)            & \py{10 * 20 }        & \py{\#$\Rightarrow$ 200}  \\
+                             & deling (\py /)          & \py{10 / 2 }         & \py{\#$\Rightarrow$ 5.0}  \\
+                             & rest of modulo (\py \%) & \py{10 \% 3 }        & \py{\#$\Rightarrow$ 1}    \\
+                             & machten (\py{**})       & \py{10 ** 3 }        & \py{\#$\Rightarrow$ 1000} \\
+    \textbf{haakjes}         & \py{()}                 & \py{(20 + 3) * 2}    & \py{\#$\Rightarrow$ 46}   \\
+    \textbf{kommagetallen}   & punt (\py .)            & \py{3.14 }           & \py{\#$\Rightarrow$ 3.14} \\
+    \textbf{gehele getallen} & \py{int}egers           & \py{int(1.2)}        & \py{\#$\Rightarrow$ 1}    \\
+                             &                         & \py{int(-1.2)}       & \py{\#$\Rightarrow$ -1}   \\
+    \textbf{kommagetallen}   & \py{float}ing point     & \py{float(1)}        & \py{\#$\Rightarrow$ 1.0}  \\
+    \\
+    \textbf{functies}        & \py{abs}olute waarde    & \py{abs(-10)}        & \py{\#$\Rightarrow$ 10}   \\
+                             & vierkantswortel         & \py{math.sqrt(4)}    & \py{\#$\Rightarrow$ 2.0}  \\
+                             & machten                 & \py{math.pow(2, 3)}  & \py{\#$\Rightarrow$ 8.0}  \\
+    \\
+    \textbf{afronden}        &                         & \py{round(4.6)}      & \py{\#$\Rightarrow$ 5}    \\
+                             & naar boven   (plafond)  & \py{math.ceil(4.2)}  & \py{\#$\Rightarrow$ 5}    \\
+                             & naar beneden (vloer)    & \py{math.floor(4.6)} & \py{\#$\Rightarrow$ 4}
+  \end{tabular}
+  \\[1em]
+  Opgelet: om de functies met \py{math} te kunnen gebruiken moet je Python
+  eerst zeggen dat we die zullen gebruiken. Je moet dus eerst \py{import math}
+  uitvoeren.
+
+  Er bestaan nog veel meer wiskundige functies die Python kent. Je kan ze
+  oplijsten door \py{dir(math)} uit te voeren. Om dan te weten wat bijvoorbeeld
+  \py{math.sqrt} juist doet, kan je \py{help(math.sqrt)} uitvoeren.
+
+\section{Toewijzen}
+  Python kan ook dingen voor je onthouden. Als je \py{var = 1 + 2} invoert,
+  dan slaat Python het getal \py{3} op in de \emph{variabele} \py{var}.
+  Die kan je later opnieuw oproepen door gewoon opnieuw dat symbool te
+  gebruiken. In dit geval zou \py{var / 3} evalueren naar \py{1.0}.
+
+\section{Logica}
+  \begin{tabular}{l@{\hspace{0.5em}}l@{\hspace{0.5em}}l@{\hspace{0.3em}}l}
+    \textbf{\emph{Boolean}s} & Waar                        & \pyt{\underline{T}rue}  & \py{\#$\Rightarrow$ True}  \\
+                             & Vals                        & \pyt{\underline{F}alse} & \py{\#$\Rightarrow$ False} \\
+    \textbf{vergelijken}     & gelijk (\py{==})            & \py{5 == 4.0 + 1}       & \py{\#$\Rightarrow$ True}  \\
+                             & niet gelijk (\py{!=})       & \py{5 != 4}             & \py{\#$\Rightarrow$ True}  \\
+                             & kleiner (\py{<})            & \py{3 < 2}              & \py{\#$\Rightarrow$ False} \\
+                             & kleiner of gelijk (\py{<=}) & \py{2 <= 2}             & \py{\#$\Rightarrow$ True}  \\
+                             & groter (\py{>})             & \py{2 > 2}              & \py{\#$\Rightarrow$ False} \\
+                             & groter of gelijk (\py{>=})  & \py{2 >= 3}             & \py{\#$\Rightarrow$ False} \\
+    \textbf{logica}          & niet (\py{not})             & \py{not True}           & \py{\#$\Rightarrow$ False} \\
+                             & en (\py{and})               & \py{(1 < 2) and False}  & \py{\#$\Rightarrow$ False} \\
+                             & of (\py{or})                & \py{(1 < 2) or False}   & \py{\#$\Rightarrow$ True}  \\[0.3em]
+                             & bevat (\py{in})             & \py{4 in [2, 4, 6]}     & \py{\#$\Rightarrow$ True}  \\
+  \end{tabular}
+  \\[1em]
+  Opgelet: \py{is} bestaat ook in Python, maar is niet hetzelfde als
+  \py{==}. Python evalueert \py{1 is 1.0} naar \py{False}!
+
+\section{Tekst en uitvoer}
+  Stukjes tekst noemt men \emph{strings}. Je kan ze maken met enkele of dubbele aanhalingstekens.
+  \py{"Hallo, ik ben een stukje tekst!"}.
+  Tekst kan je ook op het scherm laten verschijnen als output van je programma.
+  Dit noemen we \emph{print}en. We zullen uitvoer aanduiden met \py{\#=}.
+  Tekst kan je samenvoegen met \py{+} en ook vermenigvuldigen werkt zoals
+  verwacht:
+  \begin{python}
+    tekst = "ik ben een stukje tekst!"
+    print("hallo, " * 3 + tekst)
+    #= hallo, hallo, hallo, ik ben een stukje tekst!
+  \end{python}
+  Het bovenstaande stukje code heeft geen resultaat, vandaar dat er geen
+  \py{\#$\Rightarrow$} staat. Het heeft wel uitvoer!
+
+  Opgelet: Python weet niet wat er moet gebeuren als je probeert een getal aan
+  een string toe te voegen. Als je bijvoorbeeld \py{"test " + 123} uitvoert,
+  zegt Python dat hij voor de positie van \py{123} een string verwacht, en
+  niet een getal. De juiste manier om getallen bij te voegen is door Python
+  eerst te zeggen dat het getal als een stukje tekst moet ge\"interpreteerd
+  worden. Dat doe je met \py{str}. De juiste manier om tekst toe te voegen
+  is dus: \py{"test " + str(123)}.
+
+\section{Invoer}
+  Je kan de gebruiker van je programma ook tekst laten invoeren om die daarna in
+  je programma te gebruiken. Dit doe je met \py{input("Instructies voor
+    gebruiker hier")}. Natuurlijk moet je programma ook onthouden wat het
+  resultaat is, dus moet je het toewijzen. Zo maak je bijvoorbeeld gemakkelijk een
+  programmaatje dat je groet:
+  \begin{python}
+    invoer = input("Hoe heet je?")
+    #= Hoe heet je?
+    # Het programma wacht tot je iets hebt ingevoerd
+    print("Hallo, " + invoer + "!")
+    #= Hallo, NAAM!
+  \end{python}
+  Ik kan de invoer natuurlijk niet voorspellen. Het enige dat ik kan
+  schrijven is \py{\#= Hallo, NAAM!}, waar naam de invoer is.
+
+  Opgelet: het resultaat van \py{input}, dus de invoer die je geeft, is
+  altijd een string. Als je het als een getal wilt gebruiken, dan moet je eerst
+  zeggen tegen Python dat ie het als een getal moet interpreteren. Dat doe je
+  met \py{int} of \py{float}. Hieronder een voorbeeld:
+  \begin{python}
+    antwoord = input("In welk jaar ben je geboren?")
+    leeftijd = 2017 - int(antwoord)
+    print("Dan ben je nu " + str(leeftijd) + "jaar oud.")
+  \end{python}
+
+\section{Een programma schrijven}
+  Bovenstaande code bevat een fout! Het kan zijn dat de verjaardag van de
+  gebruiker nog niet gevallen is. De juiste leeftijd is dus \py{leeftijd} of
+  \py{leeftijd - 1}. Dat kan je programma natuurlijk niet weten, jij hebt
+  het immers enkel gezegd dat \py{leeftijd} juist is! Dit illustreert dat
+  conceptuele fouten nooit de fout zijn van het programma, maar van de
+  programmeur!
+
+\section{Fouten opsporen}
+  Wanneer je een fout maakt in de code waardoor Python niet weet wat je bedoelt,
+  dan zal Python reclameren. Hieronder enkele van die fouten.
+
+  \subsection{Syntax}: de syntax is de grammatica van de taal. Als de grammatica
+  niet juist is, dan weet Python niet wat je bedoelt:
+  \begin{python}
+    1 + &
+    #=     1 + &
+    #=         ^
+    #= SyntaxError: invalid syntax
+    1 + * 1
+    #=     1 + * 1
+    #=         ^
+    #= SyntaxError: invalid syntax
+  \end{python}
+  Het pijltje duidt aan waar de fout zich juist bevindt.
+
+  \subsection{Naamfouten}: wanneer een symbool of naam niet gedefinieerd is, weet
+  Python niet wat je bedoelt:
+  \begin{python}
+    getal + 1
+    #= Traceback (most recent call last):
+    #=   File "<stdin>", line 1, in <module>
+    #= NameError: name 'a' is not defined
+    getal = 10
+    getal + 1 #=> 11
+  \end{python}
+  Hier geeft Python niet zo'n pijltje. Hij zegt wel in welk
+  bestand de fout voorkwam en op welke lijn het gebeurde. Hieronder laten we die
+  eerste twee lijnen weg, zodat we op de aard van de fout kunnen focussen.
+
+  \subsection{Fout gebruik}: wanneer je een functie fout gebruikt. Gebruik
+  \py{help} voor meer info!
+  \begin{python}
+    abs(1,2)
+    #= TypeError: abs() takes exactly one argument (2 given)
+    abs(1.2) #=> 1.2
+  \end{python}
+  Bovenstaande code roept de functie \py{abs} op met twee
+  argumenten, namelijk \py{1} en \py{2}, m.a.w. Python ziet de bovenste
+  lijn als \mbox{\py{abs(1, 2)}}. Onthoud dat kommagetallen in Python met een punt
+  worden geschreven.
+
+  \subsection{Foute types}: De operatie die je wilt doen kan niet met de gegeven
+  types:
+  \begin{python}
+    "20" + 1
+    #= TypeError: must be str, not int
+    1 + "20"
+    #= TypeError: unsupported operand type(s) for +: [..]
+    #=            [..] `int' and `str'
+    "20" + "1" #=> "201"
+    20 + 1     #=> 21
+  \end{python}
+  Om het type van iets te identificeren kan je altijd \py{type} gebruiken:
+  \vspace{-0.5em}
+  \begin{center}
+    \begin{minipage}{0.46\linewidth}
+      \begin{Verbatim}[gobble=8]
+        getal = 20
+        type(getal)
+        #= <class `int'>
+        \end{Verbatim}
+    \end{minipage} %
+    \begin{minipage}{0.46\linewidth}
+      \begin{Verbatim}[gobble=8]
+        getal = "20"
+        type(getal)
+        #= <class `str'>
+      \end{Verbatim}
+    \end{minipage}
+  \end{center}
+
+  \subsection{Wiskundige fouten}: bijvoorbeeld delen door nul:
+  \begin{python}
+    20 / int(0.9)
+    #= ZeroDivisionError: division by zero
+  \end{python}
+
+  \subsection{Foute code}: soms komt het ook voor dat Python denkt dat ie weet wat
+  je bedoelt, maar doet het programma toch iets anders. Een voorbeeld is het
+  volgende programma dat een getal vervijfvoudigt:
+  \begin{python}
+    getal = input("Geef een getal: ")
+    print(getal * 5)
+  \end{python}
+  De variabele \py{getal} is voor Python een string, dus als je dit uitvoert
+  en bijvoorbeeld \py{5} als invoer geeft, dan zal het programma
+  \py{55555} printen, en niet \py{25}! Je moet dus als programmeur
+  opletten met wat voor types variabelen je werkt. In dit geval werken we met
+  een \emph{str}ing en niet met een \emph{int}eger.

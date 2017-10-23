@@ -1,0 +1,96 @@
+% -*- mode: Latex; ispell-dictionary: "dutch"; -*-
+\documentclass[a4paper]{article}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ left=15mm,
+ right=15mm,
+ top=20mm,
+}
+\usepackage[dutch]{babel}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+%\usepackage{listings}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+
+\hypersetup{pdfinfo={
+  Title={Programmeren met Python},
+  Creator={LaTeX},
+  Producer={pdfTeX 3.14159265-2.6-1.40.18},
+  Author={Laurens Bloemen},
+  Subject={Programmeerlessen Python},
+  Keywords={lectures, programming, ring, ka2, lessen, programmeren, python}}}
+
+% Redefine section to use less space
+\makeatletter
+% \@startsection{<name>}{<level>}{<indent>}{<beforeskip>}{<afterskip>}{<style>}*[<altheading>]{<heading>}
+% plus and minus: glue stretching
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {-0.5ex plus .2ex}%x
+                                {\normalfont\bfseries}}
+\makeatother
+
+\newcommand{\anemail}[1]{\href{mailto:#1}{#1}}
+
+% Requires fancyvrb
+\newenvironment{python}%
+  {\endgraf\vspace{-0.4em}\Verbatim[xleftmargin=1em]}%
+  {\endVerbatim\vspace{-0.2em}}
+\newcommand{\py}[1]{\texttt{#1}}
+\newcommand{\pyt}[1]{\py{#1}}
+
+% % Requires listings
+% \lstset{
+%   language=python,
+%   xleftmargin=1em,
+%   showstringspaces=false,
+%   columns=fullflexible,
+%   mathescape}
+% \lstnewenvironment{python}{}{}
+% \newcommand{\py}[1]{\lstinline[]@#1@} % BEWARE: NO USING @ in code! % WILL BREAK!!
+% \newcommand{\pyt}[1]{\texttt{#1}} % For text markup within code.
+
+\pagestyle{empty} % Turn off header and footer
+\setcounter{secnumdepth}{0} % Don't print section numbers
+\setlength{\parindent}{0pt} % No indent at start of paragraph
+
+\begin{document}
+\pagenumbering{gobble}
+\input{content/intro}
+
+\footnotesize
+\begin{multicols}{2}
+  \setlength{\premulticols}{1pt}
+  \setlength{\postmulticols}{1pt}
+  \setlength{\multicolsep}{2pt}
+  \setlength{\columnsep}{8pt}
+  % \setlength{\columnseprule}{0.25pt}
+
+  \input{content/les00}
+  \begin{center}{\centering \rule{0.3\linewidth}{0.25pt} Les 00 - 2017-10-17 \rule{0.3\linewidth}{0.25pt}}\end{center}
+
+  % \section{Control Flow of besturingsstroom}
+  % Tot nu toe hebben onze programma's altijd rechtlijnig uitgevoerd. Eerst het
+  % eerste lijntje code, daarna het volgende, enzovoort. Maar soms willen we dat
+  % de code een regeltje overslaat of sommige dingen enkele keren doet.
+  % \subsection{if}:
+  % \subsection{if .. else}:
+  % \subsection{for .. in}:
+  % \subsection{while}:
+  % \subsection{break en continue}:
+
+  % \section{String formats}
+  % \section{Tekstmanipulatie}
+  % \section{Je eigen functies}
+  % \section{Recursie}
+  \clearpage
+\end{multicols}
+\end{document}

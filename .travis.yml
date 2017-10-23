@@ -1,0 +1,22 @@
+sudo: required
+dist: trusty
+branches:
+  only:
+  - master
+  - /^v.*$/
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latexmk texlive-lang-dutch
+script:
+- mkdir _build
+- latexmk -pdf -outdir=_build main.tex
+- mv _build/main.pdf _build/python-ka2ring.pdf
+deploy:
+  provider: releases
+  api_key:
+    secure: o1yqQcbjeUtlgXnVM41lLzmbdqNCuEM4HTiaZ4Tp/XiF+4kiZhDFQl6M5p3uR4yRQYRwDhW0/WIaPAWaavh21WdbmyLKT3edW3PJ7jmsMHkvoC8SUew8eMZ9WKmWB1rGESw4zGd5PDrNjq7lsVTcl0py053QbdROLWE0ERV7We4Ml9MLnWzLNC3SXSCqaGcJO6TJS3OY6wcrDkYVp/N11DIBFIBbjW1vuYwmx8lzBz4I3RW0uE94ddXrOoPtp+GWRF7h7ARjPj5r31rHj3Di64i1f3NgBvLL9rPrN0OLS79i/H/OoPtIeoUaQKcseoihQUG470FEFOWyV6ehSeFRG2Z2i6+pdqAQXdx8EQnDaJcQ5KNPeTMl6cbPuOBsboIYxtv3snFzXHgzPYLqkPULuO1OlsiKG+kOmb7k11JAlS++2NNelurl29u1GC52kUmbky8cl/UEV5XGs0/98fGFgCtT1l/zRmPTEQgAyuxMWIgUkNkSqqf8zRPOKjilUbQA9S9OlahCY7wGURJ+z6/4IbCt9I83SAVRcK8Emy2ldSMou8gLDqaWnzofoTfpikVdrBqh9hd+b9iCD8srbV3oXM2XistDOnnWFLsBCC/Sv/kUtM9QVbn1xbZhb+lIGTQKrSrCk+hf8oa6TN/P2BDjpS9dqYE4qU/cBgRuz3JYlSM=
+  file: _build/python-ka2ring.pdf
+  skip_cleanup: true
+  on:
+    repo: TGThorax/python-ka2ring
+    tags: true
+tags: true
