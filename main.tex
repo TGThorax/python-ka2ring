@@ -1,5 +1,5 @@
 % -*- mode: Latex; ispell-dictionary: "dutch"; -*-
-\documentclass[a4paper]{article}
+\documentclass[a4paper,notitlepage]{report}
 \usepackage{geometry}
  \geometry{
  a4paper,
@@ -24,19 +24,41 @@
   Subject={Programmeerlessen Python},
   Keywords={lectures, programming, ring, ka2, lessen, programmeren, python}}}
 
-% Redefine section to use less space
+% Redefine section to use less space.
 \makeatletter
 % \@startsection{<name>}{<level>}{<indent>}{<beforeskip>}{<afterskip>}{<style>}*[<altheading>]{<heading>}
 % plus and minus: glue stretching
-\renewcommand{\section}{\@startsection{section}{1}{0mm}%
-                                {-1ex plus -.5ex minus -.2ex}%
-                                {0.5ex plus .2ex}%x
-                                {\normalfont\large\bfseries}}
-\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
-                                {-1ex plus -.5ex minus -.2ex}%
-                                {-0.5ex plus .2ex}%x
-                                {\normalfont\bfseries}}
+\renewcommand{\section}{%
+  \@startsection{section}{1}{0mm}%
+  {-1ex plus -.5ex minus -.2ex}%
+  {0.5ex plus .2ex}%x
+  {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{%
+  \@startsection{subsection}{2}{0mm}%
+  {-1ex plus -.5ex minus -.2ex}%
+  {-0.5ex plus .2ex}%
+  {\normalfont\bfseries}}
 \makeatother
+\setcounter{chapter}{-1}
+\setcounter{section}{-1}
+
+% Style for the lesson seperator.
+\newcommand{\linestyle}[1]{
+  \begin{center}
+  \mbox{
+    \rule{0.25\linewidth}{0.25pt}
+    #1
+    \rule{0.25\linewidth}{0.25pt}}
+  \end{center}}
+
+% args: content, les nr, datum, info
+\newcommand{\lesson}[4]{
+  \addcontentsline{toc}{chapter}{Les #2 -- #3 -- #4}
+  \stepcounter{chapter}
+  \setcounter{section}{-1}
+  \input{#1}
+  \linestyle{Les #2 - #3}
+}
 
 \newcommand{\anemail}[1]{\href{mailto:#1}{#1}}
 
@@ -59,11 +81,11 @@
 % \newcommand{\pyt}[1]{\texttt{#1}} % For text markup within code.
 
 \pagestyle{empty} % Turn off header and footer
-\setcounter{secnumdepth}{0} % Don't print section numbers
+\setcounter{secnumdepth}{1} % Only sections
 \setlength{\parindent}{0pt} % No indent at start of paragraph
 
 \begin{document}
-\pagenumbering{gobble}
+\pagestyle{plain}
 \input{content/intro}
 
 \footnotesize
@@ -74,8 +96,7 @@
   \setlength{\columnsep}{8pt}
   % \setlength{\columnseprule}{0.25pt}
 
-  \input{content/les00}
-  \begin{center}{\centering \rule{0.3\linewidth}{0.25pt} Les 00 - 2017-10-17 \rule{0.3\linewidth}{0.25pt}}\end{center}
+  \lesson{content/les00}{0}{2017-10-17}{introductie}
 
   % \section{Control Flow of besturingsstroom}
   % Tot nu toe hebben onze programma's altijd rechtlijnig uitgevoerd. Eerst het
@@ -91,6 +112,8 @@
   % \section{Tekstmanipulatie}
   % \section{Je eigen functies}
   % \section{Recursie}
+  \clearpage
+  \tableofcontents
   \clearpage
 \end{multicols}
 \end{document}
