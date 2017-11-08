@@ -11,6 +11,7 @@
 \usepackage{multicol}
 \usepackage{calc}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{nicefrac}
 %\usepackage{listings}
 \usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
@@ -76,9 +77,9 @@
 %   showstringspaces=false,
 %   columns=fullflexible,
 %   mathescape}
-% \lstnewenvironment{python}{}{}
-% \newcommand{\py}[1]{\lstinline[]@#1@} % BEWARE: NO USING @ in code! % WILL BREAK!!
-% \newcommand{\pyt}[1]{\texttt{#1}} % For text markup within code.
+% \lstnewenvironment{pythonl}{}{}
+% \newcommand{\pyl}[1]{\lstinline[]@#1@} % BEWARE: NO USING @ in code! % WILL BREAK!!
+% \newcommand{\pytl}[1]{\texttt{#1}} % For text markup within code.
 
 \pagestyle{empty} % Turn off header and footer
 \setcounter{secnumdepth}{1} % Only sections
@@ -96,14 +97,25 @@
   \setlength{\columnsep}{8pt}
   % \setlength{\columnseprule}{0.25pt}
 
-  \lesson{content/les00}{0}{2017-10-17}{introductie}
+  \lesson{content/les00}{0}{2017-10-17}{Introductie}
+  \lesson{content/les01}{1}{2017-10-24}{Control flow: \py{if} en \py{else}}
 
-  % \section{Control Flow of besturingsstroom}
-  % Tot nu toe hebben onze programma's altijd rechtlijnig uitgevoerd. Eerst het
-  % eerste lijntje code, daarna het volgende, enzovoort. Maar soms willen we dat
-  % de code een regeltje overslaat of sommige dingen enkele keren doet.
-  % \subsection{if}:
-  % \subsection{if .. else}:
+  % TODO: move to content/les02
+  \section*{Enkele oefeningen}
+  We geven enkele oefeningen op wat we de vorige weken gedaan hebben. De
+  oplossingen staan zoals gewoonlijk op
+  \href{https://github.com/TGThorax/python-ka2ring/src}{github}.
+  \begin{itemize}
+  \item Maak een programma dat de gebruiker zijn of haar lengte in cm en gewicht
+    in kg vraagt en dan als output de bmi van de persoon tot op twee cijfers na
+    de komma geeft. De bmi wordt gegeven in eenheden $\nicefrac{kg}{m^2}$.
+    Vergeet dus niet de lengte naar meter om te zetten. Ga ook na of de
+    opgegeven data wel kan, dus niet kleiner is dan nul.
+  \item Vraag de gebruiker om een jaar en ga na of dat een schrikkeljaar is.
+    Een schrikkeljaar is een jaar dat deelbaar is door vier, maar is dat niet
+    niet wanneer het deelbaar is door honderd, maar weer wel wanneer het
+    deelbaar is door vierhonderd.
+  \end{itemize}
   % \subsection{for .. in}:
   % \subsection{while}:
   % \subsection{break en continue}:

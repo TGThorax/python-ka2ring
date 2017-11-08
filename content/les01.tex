@@ -1,0 +1,139 @@
+% -*- mode: Latex; ispell-dictionary: "dutch"; -*-
+
+\section*{Control Flow of besturingsstroom}
+  Tot nu toe hebben onze programma's altijd rechtlijnig uitgevoerd. Eerst het
+  eerste lijntje code, daarna het volgende, enzovoort. Maar soms willen we dat
+  de code een regeltje overslaat of sommige dingen enkele keren doet.
+  \section{Voorwaardelijk uitvoeren}
+  We zullen als voorbeeld het programma dat je leeftijd geeft verbeteren, door
+  ook naar de geboortemaand te vragen. Met die maand kunnen we nakijken of de
+  persoon nu \py{leeftijd} of \py{leeftijd - 1} jaar oud is. We zullen om te
+  beginnen de geboortedag dus achterwege laten. Het programma moet op een moment
+  wel de beslissing kunnen maken tussen \py{leeftijd} en \py{leeftijd - 1}. Wij
+  zullen de computer moeten zeggen hoe dat juist gebeurt:
+  \subsection{if}: in python kan je code voorwaardelijk uitvoeren door \py{if}
+  te gebruiken. De syntax, de grammatica dus, hiervoor is als volgt:
+  \begin{python}
+    if TEST:
+      # Alle lijnen met een indentatie (spaties of tabs)
+      # worden enkel uitgevoerd als TEST waar is.
+    # Vanaf de volgende lijn die terug op de zelfde `hoogte'
+    # als de `if' zelf staat, wordt alles terug uitgevoerd.
+  \end{python}
+  Nu zien we dus ook waarom we geen spaties aan het begin van de lijn mogen
+  zetten als we niet bijvoorbeeld \py{if} gebruiken. Wanneer python zo'n
+  ge\"indenteerde lijn ziet, zoekt ie automatisch bij welke \emph{blok} dat
+  juist hoort. Wanneer iets fout ge\"indenteerd is weet python niet wanneer dat
+  stukje code moet uitgevoerd worden, dus bij welke blok het lijntje hoort.
+
+  \subsection{if..else}: Soms moeten we code uitvoeren van de vorm
+  \begin{python}
+    if TEST:
+      # Code als TEST waar is
+    if (not TEST):
+      # Code als TEST niet waar is
+  \end{python}
+  Omdat we bij het programmeren vaak ook zo weinig mogelijk in herhaling willen
+  vallen is er ook een kortere versie hiervan:
+  \begin{python}
+    if TEST:
+      # Code als TEST waar is
+    else:
+      # Code als TEST niet waar is
+  \end{python}
+  Deze code is ook beter, want nu moet Python niet \py{not TEST} uitvoeren
+  om te weten of dat tweede stukje moet uitgevoerd worden of niet. Python weet
+  immers al dat \py{not TEST} waar zal zijn als \py{TEST} waar is.
+
+  Hieronder verbeteren we de code:
+  \begin{python}
+    jaar  = int(input("In welk jaar ben je geboren? "))
+    maand = int(input("En in welke maand? (getal) "))
+    if (maand <= 10): # 10 voor oktober
+      # De gebruiker is al verjaard dit jaar
+      print("Je bent " + str(2017 - jaar) + " jaar oud.")
+    else:
+      print("Je bent " + str(2017 - jaar - 1) + " jaar oud.")
+  \end{python}
+  Dit uitbreiden voor een dag kan al vanaf dit punt, maar zoals we in de lessen
+  zagen is dat niet zo gemakkelijk als het lijkt. Het was zo moeilijk omdat we
+  het overzicht niet goed konden bewaren over wat we nu juist bezig waren
+
+  \section{Mooie code}
+  Bovenstaande programma heeft wel een nadeel: het werkt alleen maar juist in
+  oktober 2017. Nog erger: wanneer iemand de code wil repareren moet iemand
+  eerst zoeken wat er juist fout is. In dit geval zou dat het jaar en de maand
+  zijn. Om diegene die de code moet herstellen (dat kan je toekomstige zelf
+  zijn) te helpen zullen we die \emph{magische constanten} \py{2017} en \py{10}
+  \addcontentsline{toc}{subsection}{Geen magische constanten}%
+  een duidelijke naam geven. Om het programma altijd werkende te houden zouden
+  we bijvoorbeeld de gebruiker naast zijn of haar verjaardag ook naar de
+  huidige dag te vragen. Wat ook kan is de computer de huidige dag zelf laten
+  invullen. Dat zou allemaal makkelijker zijn als er maar \'e\'en plaatsje is dat
+  aangepast moet worden.
+
+  \addcontentsline{toc}{subsection}{Weinig herhaling}%
+  In bovenstaande code zien we ook dat we in de herhaling vallen: het
+  enige dat verandert in de twee voorwaarden is de leeftijd. Alle tekst er rond
+  blijft hetzelfde. Als we dit programma moeten verbeteren op taalfouten of
+  bijvoorbeeld moeten vertalen, dan is dat veel gemakkelijker om dat op een
+  plaats te doen dan op meerdere te gelijk. We kunnen beter de leeftijd
+  aanpassen in de voorwaarden en op het einde het resultaat aan de gebruiker
+  tonen. De aangepaste voorwaarden zijn dan zoiets als
+  \begin{python}
+    if (maand <= huidige_maand):
+      leeftijd = huidig_jaar - jaar
+    else:
+      leeftijd = huidig_jaar - jaar - 1
+    print("Dan ben je " + str(leeftijd) + " jaar oud.")
+  \end{python}
+  Hier zien we opnieuw dat we in de herhaling vallen! In beide gevallen moeten
+  we \py{huidig\_jaar - jaar} doen. Als we dit gewoon altijd doen en dan de
+  leeftijd aanpassen wanneer de gebruiker nog niet verjaard is, dan kan het
+  eerste gedeelte van de voorwaarde zelfs weggelaten worden. De volledige code
+  is dan als volgt uit:
+  \begin{python}
+    huidig_jaar   = 2017
+    huidige_maand = 10
+    jaar  = int(input("In welk jaar ben je geboren? "))
+    maand = int(input("En in welke maand? (getal) "))
+    leeftijd = huidig_jaar - jaar
+    if (maand > huidige_maand):
+      # De gebruiker is nog niet verjaard
+      leeftijd = leeftijd - 1
+    print("Dan ben je " + str(leeftijd) + " jaar oud.")
+  \end{python}
+  Noot: hierboven definieerde we \py{leeftijd} in termen van \py{leeftijd}. In
+  de wiskunde kan \py{x = x - 1} natuurlijk nooit, maar onthoud dat een
+  enkele \py{=} niet voor gelijkheid, maar voor toewijzing is. In dit geval ziet
+  Python aan de rechterkant van de toewijzing een symbool dat hij kent, namelijk
+  \py{leeftijd}, en vervangt dat gewoon met de waarde ervan.
+
+  Deze code is al veel gemakkelijker om aan te passen om bijvoorbeeld de
+  geboortedag toe te voegen dan daarvoor. (Oefening. Zie
+  \href{https://github.com/TGThorax/python-ka2ring/blob/master/src/leeftijd.py}%
+  {(een) oplossing en andere vragen op github})
+
+  Het eerste principe: geen magische constanten kan je bijna altijd doen. In het
+  tweede principe, weinig herhaling, kan je zo ver gaan dat je code onleesbaar
+  wordt. Het is veel belangrijker dat je code begrijpbaar is dan dat ze kort is,
+  maar hoe langer ze is hoe makkelijker er fouten in sluipen en je het overzicht
+  verliest. Je moet dus de balans tussen leesbare en begrijpbare code en korte
+  code zien te vinden.
+
+  \section{Afkortingen}
+  Programmeurs moeten veel typen. Daarom doen ze alles om zo veel mogelijk af te
+  korten. Hieronder enkele voorbeelden:
+  \vspace{-1.5ex}
+  \begin{center}
+    \begin{tabular}[h]{ll}
+      \multicolumn{1}{c}{\textbf{Dit}} & %
+        \multicolumn{1}{c}{\textbf{is hetzelfde als}} \\[0.5ex]
+      \py{elif TEST:} & \py{else: if TEST:}           \\
+      \py{a += b}     & \py{a = a + b}                \\
+      \py{a -= b}     & \py{a = a - b}                \\
+      \py{a *= b}     & \py{a = a * b}                \\
+      \py{a /= b}     & \py{a = a / b}                \\
+      \py{a \%= b}    & \py{a = a \% b}               \\
+    \end{tabular}
+  \end{center}
