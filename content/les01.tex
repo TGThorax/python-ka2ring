@@ -4,7 +4,7 @@
   Tot nu toe hebben onze programma's altijd rechtlijnig uitgevoerd. Eerst het
   eerste lijntje code, daarna het volgende, enzovoort. Maar soms willen we dat
   de code een regeltje overslaat of sommige dingen enkele keren doet.
-  \section{Voorwaardelijk uitvoeren}
+\section{Voorwaardelijk uitvoeren}
   We zullen als voorbeeld het programma dat je leeftijd geeft verbeteren, door
   ook naar de geboortemaand te vragen. Met die maand kunnen we nakijken of de
   persoon nu \py{leeftijd} of \py{leeftijd - 1} jaar oud is. We zullen om te
@@ -59,7 +59,7 @@
   zagen is dat niet zo gemakkelijk als het lijkt. Het was zo moeilijk omdat we
   het overzicht niet goed konden bewaren over wat we nu juist bezig waren
 
-  \section{Mooie code}
+\section{Mooie code}
   Bovenstaande programma heeft wel een nadeel: het werkt alleen maar juist in
   oktober 2017. Nog erger: wanneer iemand de code wil repareren moet iemand
   eerst zoeken wat er juist fout is. In dit geval zou dat het jaar en de maand
@@ -121,7 +121,7 @@
   verliest. Je moet dus de balans tussen leesbare en begrijpbare code en korte
   code zien te vinden.
 
-  \section{Afkortingen}
+\section{Afkortingen}
   Programmeurs moeten veel typen. Daarom doen ze alles om zo veel mogelijk af te
   korten. Hieronder enkele voorbeelden:
   \vspace{-1.5ex}
@@ -129,11 +129,15 @@
     \begin{tabular}[h]{ll}
       \multicolumn{1}{c}{\textbf{Dit}} & %
         \multicolumn{1}{c}{\textbf{is hetzelfde als}} \\[0.5ex]
-      \py{elif TEST:} & \py{else: if TEST:}           \\
+      \py{elif TEST:} & \py{else: if TEST:}           \\[1ex]
+      \py{a = (b if TEST else c)} & \begin{minipage}[h]{0.3\linewidth}
+                                      \py{if TEST: a = b \\
+                                          else:~~ a = c} %~ is space in texttt
+                                    \end{minipage}    \\[2ex]
       \py{a += b}     & \py{a = a + b}                \\
       \py{a -= b}     & \py{a = a - b}                \\
       \py{a *= b}     & \py{a = a * b}                \\
       \py{a /= b}     & \py{a = a / b}                \\
-      \py{a \%= b}    & \py{a = a \% b}               \\
+      \py{a \%= b}    & \py{a = a \% b}
     \end{tabular}
   \end{center}

@@ -16,6 +16,7 @@
 \usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
 \usepackage{fancyvrb}
+\usepackage{icomma}
 
 \hypersetup{pdfinfo={
   Title={Programmeren met Python},
@@ -99,33 +100,18 @@
 
   \lesson{content/les00}{0}{2017-10-17}{Introductie}
   \lesson{content/les01}{1}{2017-10-24}{Control flow: \py{if} en \py{else}}
+  \lesson{content/les02}{2}{2017-11-07}{Alles over functies}
 
   % TODO: move to content/les02
-  \section*{Enkele oefeningen}
-  We geven enkele oefeningen op wat we de vorige weken gedaan hebben. De
-  oplossingen staan zoals gewoonlijk op
-  \href{https://github.com/TGThorax/python-ka2ring/src}{github}.
-  \begin{itemize}
-  \item Maak een programma dat de gebruiker zijn of haar lengte in cm en gewicht
-    in kg vraagt en dan als output de bmi van de persoon tot op twee cijfers na
-    de komma geeft. De bmi wordt gegeven in eenheden $\nicefrac{kg}{m^2}$.
-    Vergeet dus niet de lengte naar meter om te zetten. Ga ook na of de
-    opgegeven data wel kan, dus niet kleiner is dan nul.
-  \item Vraag de gebruiker om een jaar en ga na of dat een schrikkeljaar is.
-    Een schrikkeljaar is een jaar dat deelbaar is door vier, maar is dat niet
-    niet wanneer het deelbaar is door honderd, maar weer wel wanneer het
-    deelbaar is door vierhonderd.
-  \end{itemize}
+
+  % \subsection{lijsten}
   % \subsection{for .. in}:
   % \subsection{while}:
   % \subsection{break en continue}:
 
   % \section{String formats}
   % \section{Tekstmanipulatie}
-  % \section{Je eigen functies}
-  % \section{Recursie}
   \clearpage
   \tableofcontents
-  \clearpage
 \end{multicols}
 \end{document}
