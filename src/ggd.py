@@ -20,7 +20,7 @@ def ggd(a, b):
 #
 # Denkoefening:
 #   Wat gebeurt er in de eerste stap als b > a?
-#   HINT: dan zal a % b = a
+#   HINT: dan zal a % b == a
 #
 # Denkoefening:
 #   Wat denk je dat er gebeurt als je kommagetallen ingeeft die een veelvoud zijn van elkaar?
@@ -28,4 +28,8 @@ def ggd(a, b):
 #   Maakt het wiskundig wel steek om de ggd van kommagetallen te nemen?
 #   Kan je verklaren waarom de computer zo'n antwoord geeft? (Als je dat niet kan, is dat helemaal niet zo erg want we
 #     hebben kommagetallen tot nu toe niet grondig bestudeerd)
+#
 # Wiskundige oefening:
+#   Schrijf een functie die de grootste gemene deler voor drie getallen geeft. Schrijf die in
+#     termen van de functie ggd hierboven.
+#   Hint: wat betekent het als iets een ggd is van drie getallen?
