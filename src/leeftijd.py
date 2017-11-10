@@ -21,7 +21,7 @@ elif (maand == huidige_maand):
 #   else:                    # Enkel (dag < huidige_dag) kan nog =>
 #                            # De gebruiker is al verjaard deze maand!
 #       leeftijd = leeftijd  # Maar er hoeft niets veranderd te worden.
-# else                   # De gebruiker is zeker al verjaard,
+# else:                  # De gebruiker is zeker al verjaard,
 #                        # want enkel maand < huidige_maand kan nog!
 #   leeftijd = leeftijd  # Maar we moeten niets aanpassen!
 print("Dan ben je " + str(leeftijd) + " jaar oud.")

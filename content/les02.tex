@@ -14,10 +14,10 @@
     niet wanneer het deelbaar is door honderd, maar weer wel wanneer het
     deelbaar is door vierhonderd.
   \end{itemize}
-  Hieronder bekijken we iets nieuws: functies. De inleiding is heel erg
-  wiskundig gericht gegeven, omdat je functies normaal al kent uit de wiskunde.
-  Functies hoeven helemaal niets wiskundig te doen, zoals we bijvoorbeeld in de
-  eerste functie zullen zien.
+  Hieronder bekijken we iets nieuws: functies. Functies ken je normaal al uit de
+  wiskunde. Bij programmeren hoeven functies helemaal niets wiskundig te
+  doen (voor zover een computer niet een grote rekenmachine is natuurlijk). Het
+  extra deel over recursie is desalniettemin wiskundig gegeven.
 \section{Functies}
   Op dit moment ging ons programma steeds naar beneden: lijnen die laatst
   komen worden laatst uitgevoerd. Soms is het handig om terug naar boven te
@@ -27,7 +27,7 @@
   is als volgt:
   \begin{python}
     def naam(argumenten, met, komma, gescheiden):
-      # code die in de functie uitgevoerd moet worden
+      # code die je functie uitvoert
       return var # Geef een waarde als uitkomst.
                  # Dat hoef je niet te doen.
       # code na een `return' wordt niet uitgevoerd.
@@ -76,7 +76,7 @@
   natuurlijk een punt wanneer we de eerste functies moeten definieren. Dat zijn
   de primitieve functies. Uit die primitieve functies is de hele taal opgebouwd.
 
-\section{Recursie}
+\section{Recursie (extra)}
   Een functie kan je implementeren in termen van zichzelf. Als voorbeeld nemen
   we de faculteit uit de wiskunde, aangeduid met een uitroepteken. Daarna
   berekenen we de Fibonacci getallen. Een klassiek voorbeeld is ook de grootste
@@ -160,9 +160,9 @@
   \begin{python}
     def fib(n):
       print("fib(" + str(n) + ")", end=", ") # zie help(print)
-      if n == 1: return 0
+      if n == 1:   return 0
       elif n == 2: return 1
-      else: return fib(n - 1) + fib(n - 2)
+      else:        return fib(n - 1) + fib(n - 2)
   \end{python}
   \begin{python}
     fib(5)
@@ -222,8 +222,7 @@
   Noot: Als je een string wilt die over meerdere lijnen heen gaat kan je
   driedubbele aanhalingstekens gebruiken: \py{\char`\"\char`\"\char`\"Tekst met
     meerdere lijnen mogelijk\char`\"\char`\"\char`\"}.
-  Dit werkt wel weer niet in een repl, enkel
-  in een programma.
+  Dit werkt  niet in een repl, enkel in een programma.
 \section{Bereik van variabelen}
   Als je een variabele gebruikt in een functie, dan is die enkel daar bruikbaar.
   De volgende code illustreert:
@@ -241,7 +240,7 @@
     #= Helemaal erachter: a=3
   \end{python}
   Zoals je ziet heeft noch de definitie van de functie, noch het oproepen ervan
-  iets verandert aan onze variabele \py{a}. Dat komt omdat eigenlijk de \py{a}
+  iets veranderd aan onze variabele \py{a}. Dat komt omdat eigenlijk de \py{a}
   binnen de functie en die eruit twee verschillende variabelen zijn. De makers
   van python hebben er bewust voor gekozen dat dit zo werkt. Als dit niet het
   geval zou zijn bestaat er een kans dat de variabelen die je mooi klaarzet
