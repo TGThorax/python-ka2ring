@@ -1,0 +1,131 @@
+% -*- mode: Latex; ispell-dictionary: "dutch"; -*-
+
+\section*{Collecties en lussen}
+  Stukken data zijn soms gemakkelijker om mee te werken als ze gegroepeerd zijn.
+  Er bestaan heel erg veel soorten groeperingen of collecties. Een vaak
+  gebruikte soort collectie is een lijst. Python maakt het ons dan ook
+  gemakkelijk om met lijsten te werken.
+
+\section{Lijsten}
+  Lijsten in Python maak je met vierkante haakjes \py{[\,]}. Voor de splitsing
+  tussen elementen in een lijst gebruik je komma's:
+  \begin{python}
+    toespijs = ["kaas", "ham"]
+    groenten = ["sla", "tomaat", "augurk"]
+  \end{python}
+  Je kan lijsten samenvoegen net zoals je dat met strings kan:
+  \begin{python}
+    ingredienten = toespijs + groenten
+  \end{python}
+  Lijsten zijn \emph{ge\"indexeerd} met nummer, wat wil zeggen dat elk element
+  in een lijst een nummer krijgt. Je kan dan met die nummers de elementen
+  opvragen in de lijst. Let wel: nummering of \emph{indexering} start vanaf $0$.
+  Het eerste element in een lijst is voor Python het element met nummer of
+  \emph{index} $0$, het tweede is die met index $1$, enzovoort. Indexeren doe je
+  met vierkante haakjes \py{[\,]}:
+  \begin{python}
+    toespijs[0]   #=> "kaas"
+    groenten[2]   #=> "augurk"
+  \end{python}
+  Als je aan Python vraagt om een element met een index die buiten het aantal
+  elementen in de lijst valt, zal Python reclameren. Hij zegt dat de index niet
+  binnen het bereik van de lijst ligt:
+  \begin{python}
+    toespijs[2]   #= IndexError: list index out of range
+  \end{python}
+  Om te weten hoeveel elementen er in de lijst zitten, kan je altijd de functie
+  \py{len} gebruiken:
+  \begin{python}
+    len(toespijs) #=> 2
+  \end{python}
+  De indexering is ook cyclisch: je kan negatieve getallen gebruiken om
+  achteraan te beginnen. Zo is $-1$ het laatste element, $-2$ het op \'e\'en na
+  laatste, \ldots:
+  \begin{python}
+    groenten[-1] == groenten[len(groenten) - 1] #=> True
+  \end{python}
+  Je kan ook met indexering de elementen veranderen en verwijderen.
+  Verwijderen doe je met \py{del}:
+  \begin{python}
+    groenten[2] = "komkommer"
+    groenten  #=> ["sla", "tomaat", "komkommer"]
+
+    del toespijs[0]
+    toespijs  #=> ["ham"]
+  \end{python}
+  Noot: \py{del} is niet specifiek aan lijsten. Je kan net zo goed een variabele
+  verwijderen: \py{del groenten}.
+
+  Let wel: als je iets verandert in de ene lijst, is dat niet per se zo in de
+  andere. Zo is onze \py{ingredienten}-lijst nog steeds gelijk aan \py{["kaas",
+    "ham", "sla", "tomaat", \char`"augurk"]}, ookal hebben we
+  \py{\char`"augurk"} met \py{"komkommer"} vervangen in \py{groenten} en
+  \py{"kaas"} verwijderd in \py{toespijs}. Hoe dit juist werkt zie je in het
+  extra gedeelte \ref{sec:pointers}.
+
+  Je kan ook lijsten versnijden, of \emph{slice}n. Daarmee krijg je een kopie
+  van je lijst voor een bepaald gedeelte. Slicen doe je met het karakter \py{:}
+  binnenin de rechte haakjes van de indexering.
+  \begin{python}
+    lijst = list(range(1, 11))
+    lijst            #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    lijst[2:4]       #=> [3, 4]
+    lijst[5:-2]      #=> [6, 7, 8]
+    lijst[9:-1]      #=> []  # De lege lijst, dus.
+    lijst[:3] == lijst[0:3]  #=> True
+    lijst[6:] == lijst[6:-1] #=> True
+
+    lijst[-2:] = [1, 2]
+    del lijst[:7]
+    lijst            #=> [8, 0, 1]
+  \end{python}
+  Het vorige voorbeeld maakt gebruik van de functie \py{range} die een reeks
+  maakt met opeenvolgende getallen. Met \'e\'en argument, \py{range(n)} krijg je
+  een reeks van $0$ tot (niet met) $n$; met twee argumenten, \py{range(n, m)},
+  krijg je een reeks van $n$ tot $m$. Let wel, deze reeks is nog geen lijst. Het
+  is een andere soort verzameling of collectie: de \emph{range} of \emph{reeks}.
+  Om zo'n andere soort collectie naar een lijst om te vormen gebruik je de
+  functie \py{list} zoals in het voorbeeld. Een reeks is heel erg gelijkaardig
+  aan een lijst. Het enige grote verschil is dat je in een reeks geen dingen mag
+  veranderen, terwijl je dat in een lijst wel mag. Indexering en slicing werkt
+  volledig hetzelfde. Natuurlijk zit er in een reeks ook de structuur van
+  opeenvolgende getallen (met mogelijk een stap tussen getallen). Zo'n structuur
+  is niet nodig in een lijst.
+
+  Met \py{in} kan je zien of een element aanwezig is in een lijst:
+  \begin{python}
+    if "augurk" in groenten:
+      print("Sorry, er zijn geen augurken meer.")
+  \end{python}
+
+  Een lijst heeft ook een bepaalde vorm van waarheid ingebakken. Zo is een lege
+  lijst vals-achtig en een lijst met elementen waar-achtig:
+  \begin{python}
+    if not (toespijs or groenten):
+      print("Je wilt een broodje zonder iets op?!")
+  \end{python}
+
+  Om te zien wat je nog allemaal kan doen met lijsten kan je \py{dir([])}
+  uitvoeren. Zo vraag je aan Python ``Wat kan ik allemaal doen met een lege
+  lijst?''
+
+\section{Strings}
+  Eigenlijk ken je nog een andere soort collectie: de string. Een string is een
+  geordende verzameling van karakters. Het lijkt heel erg op een lijst. Het
+  enige verschil is dat ze onveranderlijk zijn, net zoals de reeks.
+
+
+\section{Lussen}
+  %TODO
+  \begin{python}
+    # Veronderstel dat we zeker zijn dat len(ingredienten) >= 2
+    bestelling = "Voor mij een broodje met "
+    for ingr in ingredienten[:-2]:
+      bestelling += ingr + ", "
+    bestelling += "en " + ingredienten[-1] + " graag."
+  \end{python}
+
+  % \subsection{while}:
+  % \subsection{break en continue}:
+
+\section{Pointers (extra)}\label{sec:pointers}

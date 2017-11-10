@@ -42,7 +42,6 @@
                              & naar boven   (plafond)  & \py{math.ceil(4.2)}  & \py{\#$\Rightarrow$ 5}    \\
                              & naar beneden (vloer)    & \py{math.floor(4.6)} & \py{\#$\Rightarrow$ 4}
   \end{tabular}
-  \\[1em]
   Opgelet: om de functies met \py{math} te kunnen gebruiken moet je Python
   eerst zeggen dat we die zullen gebruiken. Je moet dus eerst \py{import math}
   uitvoeren.
@@ -51,6 +50,8 @@
   oplijsten door \py{dir(math)} uit te voeren. Om dan te weten wat bijvoorbeeld
   \py{math.sqrt} juist doet, kan je \py{help(math.sqrt)} uitvoeren.
 
+  Noot: soms zal je namen die beginnen met underscore's tegenkomen wanneer je
+  \py{dir} gebruikt. Die dingen kan je best nooit gebruiken.
 \section{Toewijzen}
   Python kan ook dingen voor je onthouden. Als je \py{var = 1 + 2} invoert,
   dan slaat Python het getal \py{3} op in de \emph{variabele} \py{var}.
