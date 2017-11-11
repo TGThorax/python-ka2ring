@@ -26,7 +26,7 @@ print(antwoord)
 #   Probeer bijvoorbeeld enkele priemgetallen voor p,q,r: p = 5, q = 13, r = 23
 #   Hint:
 #   Bovenstaande programma vertrouwt erop dat als n deelbaar is door 400
-#     of 100 dan is n ook deelbaar door 4.
+#     (of 100) dan is n ook deelbaar door 4. Met willekeurige p, q, r is dat niet zo!
 #   Mogelijke hint:
 #   bovenstaande code is ook equivalent met bijvoorbeeld
 #     if (jaar % 4 == 0):

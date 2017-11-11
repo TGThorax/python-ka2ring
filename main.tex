@@ -55,6 +55,7 @@
 
 % args: content, les nr, datum, info
 \newcommand{\lesson}[4]{
+  \phantomsection
   \addcontentsline{toc}{chapter}{Les #2 -- #3 -- #4}
   \stepcounter{chapter}
   \setcounter{section}{-1}
@@ -102,7 +103,7 @@
   \lesson{content/les01}{1}{2017-10-24}{Control flow: \py{if} en \py{else}}
   % TODO: reread ->
   \lesson{content/les02}{2}{2017-11-07}{Alles over functies}
-  \lesson{content/les03}{3}{2017-11-14}{Alles over functies}
+  \lesson{content/les03}{3}{2017-11-14}{Lijsten en lussen}
 
   % \section{String formats}
   % \section{Tekstmanipulatie}
