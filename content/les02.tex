@@ -10,13 +10,18 @@
     Vergeet dus niet de lengte naar meter om te zetten. Ga ook na of de
     opgegeven data wel kan, dus niet kleiner is dan nul.
   \item Vraag de gebruiker om een jaar en ga na of dat een schrikkeljaar is.
-    Een schrikkeljaar is een jaar dat deelbaar is door vier, maar is dat niet
+    Een schrikkeljaar is een jaar dat deelbaar is door vier, maar is dat
     niet wanneer het deelbaar is door honderd, maar weer wel wanneer het
     deelbaar is door vierhonderd.
   \end{itemize}
-  Hieronder bekijken we iets nieuws: functies. Functies ken je normaal al uit de
+  Hieronder bekijken we iets nieuws: functies. We raden aan om eerst het
+  volgende hoofdstuk over collecties en lussen te lezen en dan naar hier
+  terug te keren. Dit hoofdstuk staat nu hier omdat we functies deels gezien
+  hebben in de derde les.
+
+  Functies ken je normaal al uit de
   wiskunde. Bij programmeren hoeven functies helemaal niets wiskundig te
-  doen (voor zover een computer niet een grote rekenmachine is natuurlijk). Het
+  doen (voor zover een computer niet een grote rekenmachine is, natuurlijk). Het
   extra deel over recursie is desalniettemin wiskundig gegeven.
 \section{Functies}
   Op dit moment ging ons programma steeds naar beneden: lijnen die laatst
@@ -32,14 +37,15 @@
                  # Dat hoef je niet te doen.
       # code na een `return' wordt niet uitgevoerd.
   \end{python}
-  Hier is \py{def} een verkorting van deini\"eren in het Engels: define.
+  Hier is \py{def} een verkorting van \emph{defini\"eren} in het Engels: to
+  define.
 
-  In de vorige voorbeelden moesten we vaak gebruikers naar een cijfer vragen.
-  We hadden code in de volgende vaak voorkomende vorm:
+  In de vorige voorbeelden vroegen we vaak gebruikers naar een cijfer.
+  Daarvoor gebruikten we telkens code van de volgende vorm:
   \begin{python}
     nummer = int(input("Vraag aan de gebruiker: "))
   \end{python}
-  We kunnen dat een beetje verkortten door een functie te schrijven die die
+  We kunnen dat een beetje verkorten door een functie te schrijven die die
   \py{int(input(tekst))} automatisch doet voor ons. We noemen die functie
   \py{getal} voor de gemakkelijkheid:
   \begin{python}
@@ -58,23 +64,24 @@
   Dat is al ietsje korter. Dit was natuurlijk maar een gemakkelijk voorbeeld,
   maar het geeft wel de kracht van functies weer: je moet enkel de naam weten en
   hoe je het moet gebruiken om alle code die erachter zit te kunnen gebruiken.
-  Die code zelf hoef je nooit gezien te hebben enkel de naam en instructies. Je
-  hebt misschien gemerkt dat de manier waarop we de functie \py{getal} oproepen
-  net hetzelfde is als hoe we \py{int}, \py{str}, \py{round}, \py{help},
-  \py{dir}, \py{print}, \py{input}, \ldots oproepen. Dat is omdat het elk ook
-  stuk voor stuk functies zijn! Je hebt dus al de hele tijd functies gebruikt
-  zonder het te weten. Meer nog, je hebt de code achter bijvoorbeeld \py{print}
-  nog nooit gezien, maar je hebt ze wel al in bijna elk programma gebruikt. Dat
-  is de kracht van functies.
+  Die code zelf hoef je nooit gezien te hebben. Enkel de naam en instructies
+  voldoen. Je hebt misschien gemerkt dat de manier waarop we de functie
+  \py{getal} oproepen net hetzelfde is als hoe we \py{int}, \py{str},
+  \py{round}, \py{help}, \py{dir}, \py{print}, \py{input}, \ldots oproepen. Dat
+  is omdat het elk ook stuk voor stuk functies zijn! Je hebt dus al de hele tijd
+  functies gebruikt zonder het te weten. Meer nog, je hebt de code achter
+  bijvoorbeeld \py{print} nog nooit gezien, maar je hebt ze wel al in bijna elk
+  programma gebruikt. Dat is de kracht van functies.
 
   Noot: de meeste functies die we tot nu gebruikten zijn wel \emph{primitieve}
-  functies. Dat zijn functies die in python ingebakken zitten en dus niet in de
+  functies. Dat zijn functies die in Python ingebakken zitten en dus niet in de
   taal zelf ge\"implementeerd zijn.
   Net zoals we hierboven \py{getal} implementeerden, zijn vele
-  functies, zoals bijvoorbeeld alle functies in \py{math}, in python opgebouwd
+  functies, zoals bijvoorbeeld alle functies in \py{math}, in Python opgebouwd
   uit het nauw samenwerken van andere, eerder gedefinieerde functies. Er komt
-  natuurlijk een punt wanneer we de eerste functies moeten definieren. Dat zijn
-  de primitieve functies. Uit die primitieve functies is de hele taal opgebouwd.
+  natuurlijk een moment wanneer we de eerste functies moeten defini\"eren. Dat
+  zijn de primitieve functies. Uit die primitieve functies is de hele taal
+  opgebouwd.
 
 \section{Recursie (extra)}
   Een functie kan je implementeren in termen van zichzelf. Als voorbeeld nemen
@@ -90,8 +97,8 @@
     \end{cases}
   \end{equation*}
   Dus bijvoorbeeld
-  $5!=5\cdot(4!)= \ldots = 5\cdot4\cdot3\cdot2\cdot1\cdot1 = 120$. In python
-  kunnen we dat als volgt definieren:
+  $5!=5\cdot(4!)= \ldots = 5\cdot4\cdot3\cdot2\cdot1\cdot1 = 120$. In Python
+  kunnen we dat als volgt defini\"eren:
   \begin{python}
     def fac(n):
       if (n == 0): return 1
@@ -111,9 +118,9 @@
   ergens anders. Aan jou om die uit te zoeken!
   \\[1em]
   Als je nog grotere getallen neemt, dan zal Python op een gegeven moment
-  reclameren. Dat komt omdat python ook steeds moet onthouden naar waar er moet
+  reclameren. Dat komt omdat Python ook steeds moet onthouden naar waar er moet
   teruggekeerd worden nadat de functie afgelopen is. Als je bijvoorbeeld
-  \py{fac(10)} berekent, dan moet python 10 keer de functie \py{fac} oproepen.
+  \py{fac(10)} berekent, dan moet Python 10 keer de functie \py{fac} oproepen.
   Voor 10 valt dat nog mee, maar als je grote getallen neemt verbruikt de
   computer steeds meer geheugen om te onthouden naar waar er moet teruggekeerd
   worden na elke stap. Op dit soort geheugen staat een limiet. Daarom krijg je
@@ -122,7 +129,7 @@
   groot wordt voor je computer, maar Python die je programma tijdig stopt.
 
   Hetzelfde probleem hebben we wanneer we \py{fac} met negatieve getallen
-  oproepen. Dan zal python steeds dat getal verlagen totdat het nul bereikt,
+  oproepen. Dan zal Python steeds dat getal verlagen totdat het nul bereikt,
   maar het is al lager dan nul. Het zal dus nooit ophouden! Python stopt
   gelukkig tijdig je programma.
 
@@ -170,25 +177,24 @@
     #=   fib(2), fib(3), fib(2), fib(1),
     #=> 3
   \end{python}
-  Om \py{fib(5)} uit te rekenen moet eerst \py{fib(4)} en dan \py{fib(1)}
+  Om \py{fib(5)} uit te rekenen moet eerst \py{fib(4)} en dan \py{fib(3)}
   uitgerekend worden. Maar om \py{fib(4)} uit te rekenen moet eerst [\ldots].
   Daarom krijgen we bovenstaande reeks als uitvoeringsvolgorde.
   Zo vaak hetzelfde doen is natuurlijk niet erg effici\"ent. Dat zullen we later
   oplossen.
 
   \subsection{De grootste gemene deler}
-  van twee getallen is het grootste gehele getal waardoor je die twee kan delen
-  om een geheel getal te krijgen. Bijvoorbeeld: de grootste gemene deler van
-  $25$ en $10$ is $5$, of dus \py{ggd(25, 10) == 5}. Euclides, een wiskundige
-  uit de tijd van de Grieken, heeft een algoritme om de grootste gemene deler
-  tussen twee getallen te vinden:
-
+  \ van twee getallen is het grootste gehele getal waardoor je die twee kan
+  delen om een geheel getal te krijgen. Bijvoorbeeld: de grootste gemene deler
+  van $25$ en $10$ is $5$, of dus \py{ggd(25, 10) == 5}. Euclides, een
+  wiskundige uit de tijd van de Grieken, heeft een algoritme om de grootste
+  gemene deler tussen twee getallen te vinden:
   ``De grootste gemene deler van getal $a$ en $b$ is hetzelfde als de grootste
   gemene deler van $b$ en de rest van de deling van $a$ door $b$. Als die rest
   nul is dan is de grootste gemene deler $a$.'' In ons voorbeeld is $a = 25$ en $b
   = 10$, dus is de grootste gemene deler hetzelfde als die van $10$ en $(25\
   \text{rest}\ 10) = 5$. Dat is op zich weer de grootste gemene deler tussen $5$
-  en $(10\ \text{test}\ 5) = 0$. Hier stopt het algoritme met de uitkomst $5$. De
+  en $(10\ \text{rest}\ 5) = 0$. Hier stopt het algoritme met de uitkomst $5$. De
   grootste gemene deler tussen $25$ en $10$ is dus $5$. De implementatie is een
   \href{https://github.com/TGThorax/python-ka2ring/blob/master/src/ggd.py}{oefening}.
 \subsection{Algemene vorm voor recursieve functies}:
@@ -217,7 +223,7 @@
     #= een_functie(arg, um, en, ten)
     #=     Informatie voor de gebruiker komt hier
   \end{python}
-  Zoals je ziet kan een goede naamgeving aan de argumenten mogelijk een grote
+  Zoals je ziet kan een goede naamgeving van de argumenten mogelijk een grote
   hulp zijn aan de gebruiker van je functie.\\
   Noot: Als je een string wilt die over meerdere lijnen heen gaat kan je
   driedubbele aanhalingstekens gebruiken: \py{\char`\"\char`\"\char`\"Tekst met
@@ -240,16 +246,16 @@
     #= Helemaal erachter: a=3
   \end{python}
   Zoals je ziet heeft noch de definitie van de functie, noch het oproepen ervan
-  iets veranderd aan onze variabele \py{a}. Dat komt omdat eigenlijk de \py{a}
-  binnen de functie en die eruit twee verschillende variabelen zijn. De makers
-  van python hebben er bewust voor gekozen dat dit zo werkt. Als dit niet het
+  iets veranderd aan onze variabele \py{a}. Dat komt omdat de \py{a} binnen de
+  functie en die eruit eigenlijk twee verschillende variabelen zijn. De makers
+  van Python hebben er bewust voor gekozen dat dit zo werkt. Als dit niet het
   geval zou zijn bestaat er een kans dat de variabelen die je mooi klaarzet
   voordat je een functie oproept er na die functie misschien helemaal anders
   uitzien. Stel bijvoorbeeld dat \py{input} in zijn interne code een variabele
   \py{text} aanmaakt. Als je dan code hebt die ook die variabele \py{text} heeft
-  en je roept dan de \py{print}functie op, dan kan je het wel stellen met wat je
-  in die variabele had opgeslagen. Om zulke dingen te vermijden zorgt Python er
-  dus voor dat dat niet kan gebeuren door ervoor te zorgen dat variabelen binnen
+  en je roept dan de \py{print}-functie op, dan kan je het wel stellen met wat
+  je in die variabele had opgeslagen. Om zulke dingen te vermijden zorgt Python
+  er dus voor dat dat niet kan gebeuren door te verzekeren dat variabelen binnen
   en buiten de functie niet hetzelfde zijn, alhoewel ze qua naam misschien exact
   op elkaar lijken. De regio waar een bepaalde naam of symbool ook hetzelfde
-  betekent heet \emph{het bereik van de variabelen} (Engels: scope).
+  betekent heet \emph{het bereik van de variabele} (Engels: scope).

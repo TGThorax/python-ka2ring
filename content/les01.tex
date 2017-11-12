@@ -11,19 +11,19 @@
   beginnen de geboortedag dus achterwege laten. Het programma moet op een moment
   wel de beslissing kunnen maken tussen \py{leeftijd} en \py{leeftijd - 1}. Wij
   zullen de computer moeten zeggen hoe dat juist gebeurt:
-  \subsection{if}: in python kan je code voorwaardelijk uitvoeren door \py{if}
+  \subsection{if}: in Python kan je code voorwaardelijk uitvoeren door \py{if}
   te gebruiken. De syntax, de grammatica dus, hiervoor is als volgt:
   \begin{python}
     if TEST:
       # Alle lijnen met een indentatie (spaties of tabs)
       # worden enkel uitgevoerd als TEST waar is.
-    # Vanaf de volgende lijn die terug op de zelfde `hoogte'
-    # als de `if' zelf staat, wordt alles terug uitgevoerd.
+    # Vanaf de volgende lijn die weer op de zelfde `hoogte'
+    # als de `if' zelf staat, wordt alles weer uitgevoerd.
   \end{python}
   Nu zien we dus ook waarom we geen spaties aan het begin van de lijn mogen
-  zetten als we niet bijvoorbeeld \py{if} gebruiken. Wanneer python zo'n
+  zetten als we niet bijvoorbeeld \py{if} gebruiken. Wanneer Python zo'n
   ge\"indenteerde lijn ziet, zoekt ie automatisch bij welke \emph{blok} dat
-  juist hoort. Wanneer iets fout ge\"indenteerd is weet python niet wanneer dat
+  juist hoort. Wanneer iets fout ge\"indenteerd is weet Python niet wanneer dat
   stukje code moet uitgevoerd worden, dus bij welke blok het lijntje hoort.
 
   \subsection{if..else}: Soms moeten we code uitvoeren van de vorm
@@ -43,7 +43,7 @@
   \end{python}
   Deze code is ook beter, want nu moet Python niet \py{not TEST} uitvoeren
   om te weten of dat tweede stukje moet uitgevoerd worden of niet. Python weet
-  immers al dat \py{not TEST} waar zal zijn als \py{TEST} waar is.
+  immers al dat \py{not TEST} waar zal zijn als \py{TEST} niet waar is.
 
   Hieronder verbeteren we de code:
   \begin{python}
@@ -61,22 +61,24 @@
 
 \section{Mooie code}
   Bovenstaande programma heeft wel een nadeel: het werkt alleen maar juist in
-  oktober 2017. Nog erger: wanneer iemand de code wil repareren moet iemand
-  eerst zoeken wat er juist fout is. In dit geval zou dat het jaar en de maand
-  zijn. Om diegene die de code moet herstellen (dat kan je toekomstige zelf
-  zijn) te helpen zullen we die \emph{magische constanten} \py{2017} en \py{10}
+  oktober 2017. Nog erger: wanneer iemand de code wil repareren moet iemand eerst
+  zoeken wat er juist fout is. In dit geval zou dat het jaar en de maand zijn. Om
+  diegene die de code moet herstellen (dat kan je toekomstige zelf zijn) te helpen
+  zullen we die \emph{magische constanten} \py{2017} en \py{10}
+  \phantomsection
   \addcontentsline{toc}{subsection}{Geen magische constanten}%
-  een duidelijke naam geven. Om het programma altijd werkende te houden zouden
-  we bijvoorbeeld de gebruiker naast zijn of haar verjaardag ook naar de
-  huidige dag te vragen. Wat ook kan is de computer de huidige dag zelf laten
-  invullen. Dat zou allemaal makkelijker zijn als er maar \'e\'en plaatsje is dat
-  aangepast moet worden.
+  een duidelijke naam geven. Om het programma altijd werkende te houden zouden we
+  bijvoorbeeld de gebruiker naast zijn of haar verjaardag ook naar de huidige dag
+  kunnen vragen. Wat ook kan is de computer de huidige dag zelf laten invullen.
+  Dat zou allemaal makkelijker zijn als er maar \'e\'en plaatsje is dat aangepast
+  moet worden.
 
+  \phantomsection
   \addcontentsline{toc}{subsection}{Weinig herhaling}%
   In bovenstaande code zien we ook dat we in de herhaling vallen: het
   enige dat verandert in de twee voorwaarden is de leeftijd. Alle tekst er rond
   blijft hetzelfde. Als we dit programma moeten verbeteren op taalfouten of
-  bijvoorbeeld moeten vertalen, dan is dat veel gemakkelijker om dat op een
+  bijvoorbeeld moeten vertalen, dan is dat veel gemakkelijker om dat op \'e\'en
   plaats te doen dan op meerdere te gelijk. We kunnen beter de leeftijd
   aanpassen in de voorwaarden en op het einde het resultaat aan de gebruiker
   tonen. De aangepaste voorwaarden zijn dan zoiets als
@@ -103,14 +105,14 @@
       leeftijd = leeftijd - 1
     print("Dan ben je " + str(leeftijd) + " jaar oud.")
   \end{python}
-  Noot: hierboven definieerde we \py{leeftijd} in termen van \py{leeftijd}. In
-  de wiskunde kan \py{x = x - 1} natuurlijk nooit, maar onthoud dat een
-  enkele \py{=} niet voor gelijkheid, maar voor toewijzing is. In dit geval ziet
+  Noot: hierboven definieerden we \py{leeftijd} in termen van \py{leeftijd}. In
+  de wiskunde kan \py{x = x - 1} natuurlijk nooit, maar onthoud dat het
+  symbool \py{=} niet voor gelijkheid, maar voor toewijzing staat. In dit geval ziet
   Python aan de rechterkant van de toewijzing een symbool dat hij kent, namelijk
   \py{leeftijd}, en vervangt dat gewoon met de waarde ervan.
 
-  Deze code is al veel gemakkelijker om aan te passen om bijvoorbeeld de
-  geboortedag toe te voegen dan daarvoor. (Oefening. Zie
+  Deze code is al veel gemakkelijker aan te passen dan die daarvoor. De
+  geboortedag toevoegen is nu heel gemakkelijk. (Zie
   \href{https://github.com/TGThorax/python-ka2ring/blob/master/src/leeftijd.py}%
   {(een) oplossing en andere vragen op github})
 
@@ -119,7 +121,7 @@
   onleesbaar wordt. Het is veel belangrijker dat je code begrijpbaar is dan dat
   ze kort is, maar hoe langer ze is hoe makkelijker er fouten in sluipen en je
   het overzicht verliest. Je moet dus de balans tussen leesbare en begrijpbare
-  code en korte code zien te vinden.
+  code tegenover korte code zien te vinden.
 
 \section{Afkortingen}
   Programmeurs moeten veel typen. Daarom doen ze alles om zo veel mogelijk af te

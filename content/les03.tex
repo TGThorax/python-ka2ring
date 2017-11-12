@@ -7,7 +7,9 @@
   gemakkelijk om met lijsten te werken.
 
 \section{Lijsten}
-  Lijsten in Python maak je met vierkante haakjes \py{[\,]}. Voor de splitsing
+  \phantomsection
+  \addcontentsline{toc}{subsection}{Aanmaken}
+  In Python maak je lijsten met vierkante haakjes \py{[\,]}. Voor de splitsing
   tussen elementen in een lijst gebruik je komma's:
   \begin{python}
     toespijs = ["kaas", "ham"]
@@ -17,17 +19,20 @@
   \begin{python}
     ingredienten = toespijs + groenten
   \end{python}
+
+  \phantomsection
+  \addcontentsline{toc}{subsection}{Indexeren}
   Lijsten zijn \emph{ge\"indexeerd} met nummer, wat wil zeggen dat elk element
   in een lijst een nummer krijgt. Je kan dan met die nummers de elementen
   opvragen in de lijst. Let wel: nummering of \emph{indexering} start vanaf $0$.
   Het eerste element in een lijst is voor Python het element met nummer of
-  \emph{index} $0$, het tweede is die met index $1$, enzovoort. Indexeren doe je
-  met vierkante haakjes \py{[\,]}:
+  \emph{index} $0$, het tweede is dat met index $1$, enzovoort. Indexeren doe je
+  eveneens met vierkante haakjes \py{[\,]}:
   \begin{python}
     toespijs[0]   #=> "kaas"
     groenten[2]   #=> "augurk"
   \end{python}
-  Als je aan Python vraagt om een element met een index die buiten het aantal
+  Als je Python vraagt naar een element met een index die buiten het aantal
   elementen in de lijst valt, zal Python reclameren. Hij zegt dat de index niet
   binnen het bereik van de lijst ligt:
   \begin{python}
@@ -44,7 +49,7 @@
   \begin{python}
     groenten[-1] == groenten[len(groenten) - 1] #=> True
   \end{python}
-  Je kan ook met indexering de elementen veranderen en verwijderen.
+  Je kan ook met indexering de elementen toewijzen en verwijderen.
   Verwijderen doe je met \py{del}:
   \begin{python}
     groenten[2] = "komkommer"
@@ -63,7 +68,9 @@
   \py{"kaas"} verwijderd in \py{toespijs}. Hoe dit juist werkt zie je in het
   extra gedeelte \ref{sec:pointers}.
 
-  Je kan ook lijsten versnijden, of \emph{slice}n. Daarmee krijg je een kopie
+  \phantomsection
+  \addcontentsline{toc}{subsection}{Versnijden of slicen}
+  Je kan ook lijsten versnijden, of \emph{slicen}. Daarmee krijg je een kopie
   van je lijst voor een bepaald gedeelte. Slicen doe je met het karakter \py{:}
   binnenin de rechte haakjes van de indexering.
   \begin{python}
@@ -73,17 +80,18 @@
     lijst[5:-2]      #=> [6, 7, 8]
     lijst[9:-1]      #=> []  # De lege lijst, dus.
     lijst[:3] == lijst[0:3]  #=> True
-    lijst[6:] == lijst[6:-1] #=> True
+    lijst[7:]        #=> [8, 9, 10]
 
     lijst[-2:] = [1, 2]
     del lijst[:7]
     lijst            #=> [8, 0, 1]
   \end{python}
   Het vorige voorbeeld maakt gebruik van de functie \py{range} die een reeks
-  maakt met opeenvolgende getallen. Met \'e\'en argument, \py{range(n)} krijg je
-  een reeks van $0$ tot (niet met) $n$; met twee argumenten, \py{range(n, m)},
-  krijg je een reeks van $n$ tot $m$. Let wel, deze reeks is nog geen lijst. Het
-  is een andere soort verzameling of collectie: de \emph{range} of \emph{reeks}.
+  maakt met opeenvolgende getallen. Met \'e\'en argument, \py{range(n)}, krijg
+  je een reeks van $0$ tot (niet met) $n$; met twee argumenten, \py{range(n,
+    m)}, krijg je een reeks van $n$ tot $m$. Let wel, deze reeks is nog geen
+  lijst. Het is een andere soort verzameling of collectie: de \emph{range} of
+  \emph{reeks}.
   Om zo'n andere soort collectie naar een lijst om te vormen gebruik je de
   functie \py{list} zoals in het voorbeeld. Een reeks is heel erg gelijkaardig
   aan een lijst. Het enige grote verschil is dat je in een reeks geen dingen mag
@@ -92,6 +100,8 @@
   opeenvolgende getallen (met mogelijk een stap tussen getallen). Zo'n structuur
   is niet nodig in een lijst.
 
+  \phantomsection
+  \addcontentsline{toc}{subsection}{Algemene operaties}
   Met \py{in} kan je zien of een element aanwezig is in een lijst:
   \begin{python}
     if "augurk" in groenten:
@@ -119,13 +129,14 @@
     groenten #=> ["sla", "tomaat", "komkommer", "wortel"]
   \end{python}
   Natuurlijk konden we net zo goed \py{groenten += ["wortel"]} doen (maar
-  \py{append} is een tikkeltje sneller).
+  \py{append} is een tikkeltje sneller en werkt ook anders. Zie sectie
+  \ref{sec:pointers}).
 
 \section{Strings}
   Eigenlijk ken je nog een andere soort collectie: de string. Een string is een
   geordende verzameling van karakters. Het lijkt heel erg op een lijst. Ze zijn
-  onveranderlijk zijn, net zoals de reeks. Verder kan je ook veel meer
-  tekst-specifieke functie gebruiken. Gebruik \py{dir(\char`"\char`")} voor
+  onveranderlijk, net zoals de reeks. Verder kan je ook veel meer
+  tekst-specifieke functies gebruiken. Gebruik \py{dir(\char`"\char`")} voor
   meer info.
 
 
@@ -142,7 +153,7 @@
   Zoals je ziet zal Python \'e\'en voor \'e\'en de getallen in de reeks aan de
   variabele \py{getal} toewijzen. Daarna kan je dat gewoon in de blok eronder
   gebruiken als een variabele. Ook na de lus is \py{getal} nog een gekende
-  variabele, maar natuurlijk zal python die niet meer zomaar veranderen. De
+  variabele, maar natuurlijk zal Python die niet meer zomaar veranderen. De
   waarde in de variabele is de laatst gebruikte waarde in de lus. In dit
   geval is \py{getal} na de lus gelijk aan $100$.
 
@@ -157,7 +168,7 @@
   \end{python}
 
   \subsection{while}. Soms willen we dat ons programma iets blijft herhalen
-  \emph{zolang} iets geldt. Daarvoor gebruiken we \py{while}.Het volgende
+  \emph{zolang} iets geldt. Daarvoor gebruiken we \py{while}. Het volgende
   programma blijft oneindig lang het getal $1$ printen:
   \begin{python}
     while True:
@@ -185,7 +196,7 @@
   \subsection{break en continue}. Je kan deze lussen ook vroegtijdig afbreken
   of terug van bovenaan beginnen. Dat doe je door \py{break} en \py{continue}
   respectievelijk in je lus te zetten. Dat is natuurlijk enkel handig als je dat
-  conditioneel doet. Tenzij je echt te veel condities hebt binnen de lus om het
+  voorwaardelijk doet. Tenzij je echt te veel condities hebt binnen de lus om het
   nog gemakkelijk te kunnen begrijpen, kan je ze best zo weinig mogelijk te
   gebruiken.
 
@@ -210,7 +221,7 @@
   \end{python}
   Opnieuw wordt eerst \py{[1, 2]} aangemaakt en wordt a een verwijzing daarnaar.
   Bij de tweede lijn gebeurt er echter iets anders als voorheen. Eerst wordt de
-  optelling/samenvoeging door python geregeld. Daardoor krijg je een
+  optelling/samenvoeging door Python geregeld. Daardoor krijg je een
   \emph{nieuw} stukje data \py{[1, 2, 3, 4]}. Dan pas wordt \py{b} een
   verwijzing naar die data. Aan de verwijzing in \py{a} wordt niet geraakt. De
   variabelen \py{a} en \py{b} verwijzen nu naar twee verschillende stukken data.
@@ -228,10 +239,10 @@
     b.extend([4, 5])
   \end{python}
   De tweede lijn zorgt ervoor dat \py{a} en \py{b} naar hetzelfde verwijzen,
-  zoals voorheen. De functies die in de laatste twee lijnen worden gebruikt
-  \emph{werken in op de data zelf}, dus veranderen niets aan de verwijzingen
-  \py{a} en \py{b} maar wel aan de data waarnaar ze verwijzen. Op het einde
-  verwijzen beide variabelen dus naar hetzelfde stuk data \py{[1, 2, 3, 4, 5]}.
+  zoals voorheen. De functies op de laatste twee lijnen \emph{werken in op de
+    data zelf}, dus veranderen niets aan de verwijzingen \py{a} en \py{b} maar
+  wel aan de data waarnaar ze verwijzen. Op het einde verwijzen beide variabelen
+  dus naar hetzelfde stuk data \py{[1, 2, 3, 4, 5]}.
 
   Iedereen die een verwijzing heeft naar je data kan die ook aanpassen. Dat kan
   zowel een zorg als een zegen zijn. Om de zorgen een beetje te verlichten
@@ -239,7 +250,8 @@
   reeks en de string, die ook een collectie zijn. Naast die collecties
   ken je nog onveranderlijke types: de \py{int}, de \py{float} en de \py{bool}.
   In Python kan je dus niet een verwijzing maken naar bijvoorbeeld een getal.
-  Als je dat echt per se wel zou willen, kan je ze in een lijst zetten.
+  Als je dat echt per se wel zou willen, kan je ze bijvoorbeeld in een lijst
+  zetten.
 
   Tot nu toe hebben enkel gezien dat variabelen een verwijzing kunnen zijn. Dat
   is niet in het algemeen zo. Zie het volgende voorbeeld:
@@ -264,7 +276,7 @@
   \end{python}
   Noot: voor getallen, strings, booleans, \ldots werkt \py{is} vaak toevallig
   net hetzelfde als \py{==}. Dit is echter niet in het algemeen zo voor
-  onveranderlijke data! Een voorbeeld waar het niet geldt is voor reeksen, of
+  onveranderlijke data! Het geldt bijvoorbeeld niet voor reeksen, of
   voor de integer $1$ en de float $1.0$. Gebruik dus enkel \py{==} om
-  onveranderlijke dingen te vergelijken. Als je toch \py{is} gebruikt wees dan
+  onveranderlijke data te vergelijken. Als je toch \py{is} gebruikt wees dan
   absoluut zeker dat je dat niet per ongeluk in de plaats van \py{==} doet.
