@@ -4,10 +4,10 @@ branches:
   only:
   - /^v.*$/
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latexmk texlive-lang-dutch texlive-pictures
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latexmk texlive-lang-dutch texlive-pictures pgf
 script:
 - mkdir _build
-- latexmk -pdf -outdir=_build main.tex
+- latexmk -pdf -halt-on-error -outdir=_build main.tex
 - mv _build/main.pdf _build/python-ka2ring.pdf
 deploy:
   provider: releases
