@@ -104,28 +104,167 @@
     if not (toespijs or groenten):
       print("Je wilt een broodje zonder iets op?!")
   \end{python}
-
   Om te zien wat je nog allemaal kan doen met lijsten kan je \py{dir([])}
   uitvoeren. Zo vraag je aan Python ``Wat kan ik allemaal doen met een lege
-  lijst?''
+  lijst?'' Zo zal je zien dat een functie \py{append} bestaat die \'e\'en item
+  toevoegt aan een lijst. De syntax om zo'n functie te gebruiken is:
+  \begin{itemize}
+  \item de variabele of object waarop je het wil gebruiken
+  \item een punt (\py{.})
+  \item de naam van de functie met argumenten
+  \end{itemize}
+  Bijvoorbeeld:
+  \begin{python}
+    groenten.append("wortel")
+    groenten #=> ["sla", "tomaat", "komkommer", "wortel"]
+  \end{python}
+  Natuurlijk konden we net zo goed \py{groenten += ["wortel"]} doen (maar
+  \py{append} is een tikkeltje sneller).
 
 \section{Strings}
   Eigenlijk ken je nog een andere soort collectie: de string. Een string is een
-  geordende verzameling van karakters. Het lijkt heel erg op een lijst. Het
-  enige verschil is dat ze onveranderlijk zijn, net zoals de reeks.
+  geordende verzameling van karakters. Het lijkt heel erg op een lijst. Ze zijn
+  onveranderlijk zijn, net zoals de reeks. Verder kan je ook veel meer
+  tekst-specifieke functie gebruiken. Gebruik \py{dir(\char`"\char`")} voor
+  meer info.
 
 
 \section{Lussen}
-  %TODO
+% TODO
+  \subsection{for .. in:}
+  Soms wil je dat je programma iets herhaaldelijk doet \emph{voor elk} element
+  \emph{in} een lijst. Daarvoor gebruiken we de \emph{for}-lus. Het volgende
+  programma illustreert dit. Het print alle getallen van $0$ tot en met $100$:
   \begin{python}
-    # Veronderstel dat we zeker zijn dat len(ingredienten) >= 2
+    for getal in range(101):
+      print(getal)
+  \end{python}
+  Zoals je ziet zal Python \'e\'en voor \'e\'en de getallen in de reeks aan de
+  variabele \py{getal} toewijzen. Daarna kan je dat gewoon in de blok eronder
+  gebruiken als een variabele. Ook na de lus is \py{getal} nog een gekende
+  variabele, maar natuurlijk zal python die niet meer zomaar veranderen. De
+  waarde in de variabele is de laatst gebruikte waarde in de lus. In dit
+  geval is \py{getal} na de lus gelijk aan $100$.
+
+  Je hoeft natuurlijk helemaal niet met getallen te werken in de lijsten of
+  reeksen. We kunnen net zo goed met bijvoorbeeld strings werken:
+  \begin{python}
+    # We zijn zeker zijn dat len(ingredienten) >= 2
     bestelling = "Voor mij een broodje met "
     for ingr in ingredienten[:-2]:
       bestelling += ingr + ", "
     bestelling += "en " + ingredienten[-1] + " graag."
   \end{python}
 
-  % \subsection{while}:
-  % \subsection{break en continue}:
+  \subsection{while}. Soms willen we dat ons programma iets blijft herhalen
+  \emph{zolang} iets geldt. Daarvoor gebruiken we \py{while}.Het volgende
+  programma blijft oneindig lang het getal $1$ printen:
+  \begin{python}
+    while True:
+      print(1)
+  \end{python}
+  Hierboven was de test natuurlijk altijd waar (\py{True}). Je kan natuurlijk
+  ook een voorwaarde geven die niet per se altijd waar is. Bijvoorbeeld:
+  \begin{python}
+    n_broden = 10
+    while (n_broden > 0):         # Zolang er broden zijn
+      antwoord = int(input("Hoeveel broden wil je? "));
+      if (antwoord < 0):          # We krijgen broden
+        print("Ik ben hier wel de bakker, niet jij!")
+      elif (antwoord > n_broden): # Er zijn te weinig broden
+        print("Sorry, er zijn maar " + \
+          str(n_broden) + " meer.")
+      else:
+        print("Alsjeblieft!")
+        n_broden -= antwoord
+  \end{python}
+  Hierboven gebruikten we ook het karakter \py{\textbackslash} om aan Python
+  aan te geven dat de volgende lijn eigenlijk het vervolg is op de huidige
+  lijn.
 
-\section{Pointers (extra)}\label{sec:pointers}
+  \subsection{break en continue}. Je kan deze lussen ook vroegtijdig afbreken
+  of terug van bovenaan beginnen. Dat doe je door \py{break} en \py{continue}
+  respectievelijk in je lus te zetten. Dat is natuurlijk enkel handig als je dat
+  conditioneel doet. Tenzij je echt te veel condities hebt binnen de lus om het
+  nog gemakkelijk te kunnen begrijpen, kan je ze best zo weinig mogelijk te
+  gebruiken.
+
+\section{Verwijzingen (extra)}\label{sec:pointers}
+  Neem de volgende code:
+  \begin{python}
+    a = [1, 2]
+    b = a
+  \end{python}
+  Wanneer Python dit uitvoert wordt eerst het stukje data \py{[1, 2]}
+  aangemaakt. Daarna wordt de variabele \py{a} een \emph{verwijzing} naar dat
+  stuk data. Als Python dan \py{b = a} tegenkomt, dan wordt ervoor gezorgd dat
+  de variabele \py{b} naar dezelfde data verwijst als waar \py{a} naar verwijst.
+  Zo is het duidelijk dat als we iets in \py{a} aanpassen, we het dan ook in
+  \py{b} aanpassen en vice-versa, aangezien beide variabelen naar dezelfde data
+  verwijzen.
+
+  Vergelijk met het volgende:
+  \begin{python}
+    a = [1, 2]
+    b = a + [3, 4]
+  \end{python}
+  Opnieuw wordt eerst \py{[1, 2]} aangemaakt en wordt a een verwijzing daarnaar.
+  Bij de tweede lijn gebeurt er echter iets anders als voorheen. Eerst wordt de
+  optelling/samenvoeging door python geregeld. Daardoor krijg je een
+  \emph{nieuw} stukje data \py{[1, 2, 3, 4]}. Dan pas wordt \py{b} een
+  verwijzing naar die data. Aan de verwijzing in \py{a} wordt niet geraakt. De
+  variabelen \py{a} en \py{b} verwijzen nu naar twee verschillende stukken data.
+  Het is dan logisch dat als je iets in het ene stukje data aanpast, je dat niet
+  in het andere doet.
+
+  Wat als je wilt dat alle verwijzingen aangepast worden als je elementen
+  toevoegt? Zoals je ziet kunnen we \py{+} niet gebruiken, want dat zorgt voor
+  nieuwe data. Wat we wel kunnen doen is de lijst-functies \py{append} en
+  \py{extend} gebruiken:
+  \begin{python}
+    a = [1, 2]
+    b = a
+    a.append(3)
+    b.extend([4, 5])
+  \end{python}
+  De tweede lijn zorgt ervoor dat \py{a} en \py{b} naar hetzelfde verwijzen,
+  zoals voorheen. De functies die in de laatste twee lijnen worden gebruikt
+  \emph{werken in op de data zelf}, dus veranderen niets aan de verwijzingen
+  \py{a} en \py{b} maar wel aan de data waarnaar ze verwijzen. Op het einde
+  verwijzen beide variabelen dus naar hetzelfde stuk data \py{[1, 2, 3, 4, 5]}.
+
+  Iedereen die een verwijzing heeft naar je data kan die ook aanpassen. Dat kan
+  zowel een zorg als een zegen zijn. Om de zorgen een beetje te verlichten
+  bestaan er de onveranderlijke data-types. Hiervan kennen we bijvoorbeeld de
+  reeks en de string, die ook een collectie zijn. Naast die collecties
+  ken je nog onveranderlijke types: de \py{int}, de \py{float} en de \py{bool}.
+  In Python kan je dus niet een verwijzing maken naar bijvoorbeeld een getal.
+  Als je dat echt per se wel zou willen, kan je ze in een lijst zetten.
+
+  Tot nu toe hebben enkel gezien dat variabelen een verwijzing kunnen zijn. Dat
+  is niet in het algemeen zo. Zie het volgende voorbeeld:
+  \begin{python}
+    a = [1, 2]
+    b = [a, [3, 4]] # Dus b == [[1, 2], [3, 4]]
+  \end{python}
+  Nu is het eerste element in de lijst waarnaar \py{b} verwijst zelf een
+  verwijzing, namelijk naar \py{[1, 2]}. Dat laatste is ook waar \py{a} naar
+  verwijst. Iets aanpassen in \py{a} is dus hetzelfde als iets aanpassen in
+  \py{b[0]} en vice-versa.
+
+  Om te weten of twee variabelen naar hetzelfde verwijzen kunnen we \py{is}
+  gebruiken:
+  \begin{python}
+    a = [1, 2, 3]
+    b = a
+    c = [1, 2, 3]
+    a == c    #=> True  # Ze zijn gelijk!
+    a is c    #=> False # Maar verwijzen niet naar hetzelfde!
+    a is b    #=> True  # a en b doen dat wel.
+  \end{python}
+  Noot: voor getallen, strings, booleans, \ldots werkt \py{is} vaak toevallig
+  net hetzelfde als \py{==}. Dit is echter niet in het algemeen zo voor
+  onveranderlijke data! Een voorbeeld waar het niet geldt is voor reeksen, of
+  voor de integer $1$ en de float $1.0$. Gebruik dus enkel \py{==} om
+  onveranderlijke dingen te vergelijken. Als je toch \py{is} gebruikt wees dan
+  absoluut zeker dat je dat niet per ongeluk in de plaats van \py{==} doet.
