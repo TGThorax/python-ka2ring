@@ -17,6 +17,26 @@
 \usepackage{hyperref}
 \usepackage{fancyvrb}
 \usepackage{icomma}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
+\tikzset{
+    %Define standard arrow tip
+    >=stealth',
+    %Define style for boxes
+    rbox/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           text width=8.5em,
+           minimum height=2em,
+           text centered},
+    % Define arrow style
+    arr/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,}
+}
 
 \hypersetup{pdfinfo={
   Title={Programmeren met Python},
