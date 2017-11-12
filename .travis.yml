@@ -4,7 +4,7 @@ branches:
   only:
   - /^v.*$/
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latexmk texlive-lang-dutch
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latexmk texlive-lang-dutch texlive-pictures
 script:
 - mkdir _build
 - latexmk -pdf -outdir=_build main.tex
