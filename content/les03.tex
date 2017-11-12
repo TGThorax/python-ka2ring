@@ -212,7 +212,17 @@
   de variabele \py{b} naar dezelfde data verwijst als waar \py{a} naar verwijst.
   Zo is het duidelijk dat als we iets in \py{a} aanpassen, we het dan ook in
   \py{b} aanpassen en vice-versa, aangezien beide variabelen naar dezelfde data
-  verwijzen.
+  verwijzen. De situatie is weergegeven in volgende diagram:
+  \begin{center}
+    \begin{tikzpicture}[node distance=0cm and 2.5cm, auto]
+      \node (dummy) {};
+      \node[rbox, right=of dummy] (data) {Data: \py{[1, 2]}};
+      \node[rbox, above=of dummy] (a) {Variabele \py{a}}
+        edge[arr] (data.175);
+      \node[rbox, below=of dummy] (b) {Variabele \py{b}}
+        edge[arr] (data.185);
+    \end{tikzpicture}
+  \end{center}
 
   Vergelijk met het volgende:
   \begin{python}
@@ -226,7 +236,17 @@
   verwijzing naar die data. Aan de verwijzing in \py{a} wordt niet geraakt. De
   variabelen \py{a} en \py{b} verwijzen nu naar twee verschillende stukken data.
   Het is dan logisch dat als je iets in het ene stukje data aanpast, je dat niet
-  in het andere doet.
+  in het andere doet. Diagram:
+  \begin{center}
+    \begin{tikzpicture}[node distance=0.25cm and 1.5cm, auto]
+      \node[rbox] (data1) {Data: \py{[1, 2]}};
+      \node[rbox, left=of data1] (a) {Variabele \py{a}}
+        edge[arr] (data1.west);
+      \node[rbox, below=of data1] (data2) {Data: \hbox{\py{[1, 2, 3, 4]}}};
+      \node[rbox, left=of data2] (b) {Variabele \py{b}}
+        edge[arr] (data2.west);
+    \end{tikzpicture}
+  \end{center}
 
   Wat als je wilt dat alle verwijzingen aangepast worden als je elementen
   toevoegt? Zoals je ziet kunnen we \py{+} niet gebruiken, want dat zorgt voor
@@ -247,7 +267,7 @@
   Iedereen die een verwijzing heeft naar je data kan die ook aanpassen. Dat kan
   zowel een zorg als een zegen zijn. Om de zorgen een beetje te verlichten
   bestaan er de onveranderlijke data-types. Hiervan kennen we bijvoorbeeld de
-  reeks en de string, die ook een collectie zijn. Naast die collecties
+  reeks en de string, die ook collecties zijn. Naast die collecties
   ken je nog onveranderlijke types: de \py{int}, de \py{float} en de \py{bool}.
   In Python kan je dus niet een verwijzing maken naar bijvoorbeeld een getal.
   Als je dat echt per se wel zou willen, kan je ze bijvoorbeeld in een lijst
@@ -257,12 +277,31 @@
   is niet in het algemeen zo. Zie het volgende voorbeeld:
   \begin{python}
     a = [1, 2]
-    b = [a, [3, 4]] # Dus b == [[1, 2], [3, 4]]
+    b = [a, [3, 4], 5] # Dus b == [[1, 2], [3, 4], 5]
   \end{python}
   Nu is het eerste element in de lijst waarnaar \py{b} verwijst zelf een
   verwijzing, namelijk naar \py{[1, 2]}. Dat laatste is ook waar \py{a} naar
   verwijst. Iets aanpassen in \py{a} is dus hetzelfde als iets aanpassen in
-  \py{b[0]} en vice-versa.
+  \py{b[0]} en vice-versa. Diagram:
+    \begin{center}
+    \begin{tikzpicture}[node distance=0.4cm and 1.5cm, auto]
+      \node[rbox] (data1) {Data: \py{[1, 2]}};
+      \node[rbox, left=of data1] (a) {Variabele \py{a}}
+        edge[arr] (data1.west);
+
+      \node[rbox, below=of data1] (data2) {Data: \hbox{\py{[\hspace{0.9em},\hspace{0.9em}, 5]}}};
+      \node[rbox, below=of data2] (data3) {Data: \hbox{\py{[3, 4]}}};
+
+      \node[rbox, left=of data2] (b) {Variabele \py{b}}
+        edge[arr] (data2.west);
+
+
+      \node[draw] (data21) at ([xshift=0.1em]data2.center) {}
+        edge[arr, shorten <=0pt] (data1.277);
+      \node[draw] (data21) at ([xshift=1.5em]data2.center) {}
+        edge[arr, shorten <=0pt] (data3.35);
+    \end{tikzpicture}
+  \end{center}
 
   Om te weten of twee variabelen naar hetzelfde verwijzen kunnen we \py{is}
   gebruiken:
